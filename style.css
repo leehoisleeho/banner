@@ -70,6 +70,9 @@
   align-items: center;
   cursor: pointer;
 }
+.banner_1_tab>li:hover .tab1{
+  opacity: 1;
+}
 
 .tab1{
   background:#f1f1f1;
@@ -77,9 +80,90 @@
   width: 10px;
   border-radius: 50%;
   opacity: 0;
+  transition: all .6s;
 }
 
 .active{
   opacity: 1;
 }
 
+.container_2{
+  min-width: 1200px;
+  margin-top: 30px;
+}
+
+
+.hot_4{
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:18px 20px;
+  border-bottom: 1px solid rgb(208 208 208);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hot_4>h3{
+  color: rgb(105, 105, 105);
+}
+
+.hot{
+  box-shadow: 0px 0px 10px 1px rgb(199, 199, 199);
+  border-radius: 10px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.hot_1{
+  overflow: hidden;
+}
+
+.hot_2{
+  display: flex;
+  flex-wrap: wrap;
+  width: 2400px;
+  font-size: 100px;
+  text-align: center;
+  transition: all 1.5s;
+}
+.hot_2>li{
+  border-right: 1px solid #dfdfdf;
+  width: 300px;
+  padding: 135px 0;
+  color: rgb(87, 87, 87);
+  cursor: pointer;
+}
+
+.hot_tab{
+  border-bottom-right-radius: 10px;
+}
+
+.hot_3{
+  display: flex;
+}
+
+.hot_3>li{
+  box-shadow: 0px 0px 5px 1px rgb(199, 199, 199);
+  margin-left: 30px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid rgb(189 189 189);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.hot_3>li>img{
+  width: 6px;
+}
+
+.hot_tab_1.tab1_no{
+  box-shadow:0px 0px 0px 0px rgb(199, 199, 199);
+  cursor:not-allowed;
+}

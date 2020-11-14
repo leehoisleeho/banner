@@ -102,3 +102,24 @@ banner.addEventListener("mouseleave", function () {
 })
 
 
+let hot_tab_1 = document.getElementsByClassName("hot_tab_1")
+hot_tab_1[0].onmousedown = () => {
+  document.getElementById("hot_2").style.transform = "translateX(0px)"
+  for (let i = 0; i < 2; i++) {
+    console.log("2")
+    hot_tab_1[i].className = "hot_tab_1"
+  }
+  hot_tab_1[0].className = "hot_tab_1 tab1_no"
+}
+
+
+hot_tab_1[1].onmousedown = () => {
+  document.getElementById("hot_2").style.transform = "translateX(-1200px)"
+  for (let i = 0; i < 2; i++) {
+    console.log("2")
+    hot_tab_1[i].className = "hot_tab_1"
+  }
+  hot_tab_1[1].className = "hot_tab_1 tab1_no"
+}
+
+
