@@ -6,186 +6,99 @@ let imgArr = [
   "url(./img/4.jpg)",
   "url(./img/5.jpg)",
 ]
-let banner_1 = document.getElementById("banner_1")
-let i = 1
-let tab1 = document.getElementById("tab_1")
-let tab2 = document.getElementById("tab_2")
-let tab3 = document.getElementById("tab_3")
-let tab4 = document.getElementById("tab_4")
-let tab5 = document.getElementById("tab_5")
-let component_1 = document.getElementById("component_1")
-let component_2 = document.getElementById("component_2")
 
+//获取class为“tab1”的元素
+let tab_1 = document.getElementsByClassName("tab1")
+let index = 0
+let goPre = document.getElementById("component_1")
+let goNext = document.getElementById("component_2")
+let banner = document.getElementById("banner_1")
 
+// 下面圈的样式，点那个就加上样式，并且清除其他圈的样式
+function add_tab() {
+  for (let i = 0; i < tab_1.length; i++) {
+    tab_1[i].className = "tab1"
+  }
+  tab_1[index].className = "tab1 active"
+}
 
-let bannerImg = function () {
-  if (i < imgArr.length) {
-    setTimeout(function () {
-      switch (i) {
-        case 0:
-          banner_1.style.backgroundImage = imgArr[i]
-          tab1.classList.add("active")
-          tab2.classList.remove("active")
-          tab3.classList.remove("active")
-          tab4.classList.remove("active")
-          tab5.classList.remove("active")
-          break;
-        case 1:
-          banner_1.style.backgroundImage = imgArr[i]
-          tab2.classList.add("active")
-          tab1.classList.remove("active")
-          tab3.classList.remove("active")
-          tab4.classList.remove("active")
-          tab5.classList.remove("active")
-          break;
-        case 2:
-          banner_1.style.backgroundImage = imgArr[i]
-          tab3.classList.add("active")
-          tab2.classList.remove("active")
-          tab1.classList.remove("active")
-          tab4.classList.remove("active")
-          tab5.classList.remove("active")
-          break;
-        case 3:
-          banner_1.style.backgroundImage = imgArr[i]
-          tab4.classList.add("active")
-          tab2.classList.remove("active")
-          tab3.classList.remove("active")
-          tab1.classList.remove("active")
-          tab5.classList.remove("active")
-          break;
-        case 4:
-          banner_1.style.backgroundImage = imgArr[i]
-          tab5.classList.add("active")
-          tab2.classList.remove("active")
-          tab3.classList.remove("active")
-          tab4.classList.remove("active")
-          tab1.classList.remove("active")
-          break;
-      }
-      i = i + 1
-      bannerImg()
-    }, 4000)
+function neXt() {
+  index++
+  if (index < imgArr.length) {
+    banner.style.backgroundImage = imgArr[index]
   } else {
-    i = 0
-    bannerImg()
+    index = 0
+    banner.style.backgroundImage = imgArr[index]
+  }
+
+}
+
+function preVious() {
+  if (index === 0) {
+    index = 4
+    banner.style.backgroundImage = imgArr[index]
+  } else {
+    index--
+    banner.style.backgroundImage = imgArr[index]
   }
 }
-bannerImg()
 
-tab1.onclick = () => {
-  banner_1.style.backgroundImage = imgArr[0]
-  tab1.classList.add("active")
-  tab2.classList.remove("active")
-  tab3.classList.remove("active")
-  tab4.classList.remove("active")
-  tab5.classList.remove("active")
-  i = 0
+goNext.onmousedown = () => {
+  goNext.style.transform = "scale(0.7)"
+  neXt()
+  add_tab()
+}
+goNext.onmouseup = () => {
+  goNext.style.transform = "scale(1)"
 }
 
-tab2.onclick = () => {
-  banner_1.style.backgroundImage = imgArr[1]
-  tab2.classList.add("active")
-  tab1.classList.remove("active")
-  tab3.classList.remove("active")
-  tab4.classList.remove("active")
-  tab5.classList.remove("active")
-  i = 1
+goPre.onmousedown = () => {
+  goPre.style.transform = "scale(0.7)"
+  preVious()
+  add_tab()
+}
+goPre.onmouseup = () => {
+  goPre.style.transform = "scale(1)"
 }
 
-tab3.onclick = () => {
-  banner_1.style.backgroundImage = imgArr[2]
-  tab3.classList.add("active")
-  tab2.classList.remove("active")
-  tab1.classList.remove("active")
-  tab4.classList.remove("active")
-  tab5.classList.remove("active")
-  i = 2
+
+let aaa = setInterval(() => {
+  neXt()
+  add_tab()
+}, 2000);
+
+function start() {
+  aaa = setInterval(() => {
+    neXt()
+    add_tab()
+  }, 2000);
 }
 
-tab4.onclick = () => {
-  banner_1.style.backgroundImage = imgArr[3]
-  tab4.classList.add("active")
-  tab2.classList.remove("active")
-  tab3.classList.remove("active")
-  tab1.classList.remove("active")
-  tab5.classList.remove("active")
-  i = 3
+function end() {
+  clearInterval(aaa)
 }
 
-tab5.onclick = () => {
-  banner_1.style.backgroundImage = imgArr[4]
-  tab5.classList.add("active")
-  tab2.classList.remove("active")
-  tab3.classList.remove("active")
-  tab4.classList.remove("active")
-  tab1.classList.remove("active")
-  i = 4
+
+//给没个tab添加监听事件，然后获取每个标签的data-index数据
+for (let i = 0; i < tab_1.length; i++) {
+  tab_1[i].addEventListener("click", function () {
+    let n = this.getAttribute("data-index")
+    index = n
+    banner.style.backgroundImage = imgArr[index]
+    add_tab()
+  })
 }
 
-// let m
-  // let n
-  // let a = true
-  // component_1.onclick = () => {
-  //   switch (i) {
-  //     case 0:
-  //       m = 4
-  //       banner_1.style.backgroundImage = imgArr[m]
-  //       i = m
-  //       break;
-  //     case 1:
-  //       m = i - 1
-  //       banner_1.style.backgroundImage = imgArr[m]
-  //       i = m
-  //       break;
-  //     case 2:
-  //       m = i - 1
-  //       banner_1.style.backgroundImage = imgArr[m]
-  //       i = m
-  //       break;
-  //     case 3:
-  //       m = i - 1
-  //       banner_1.style.backgroundImage = imgArr[m]
-  //       i = m
-  //       break;
-  //     case 4:
-  //       m = i - 1
-  //       banner_1.style.backgroundImage = imgArr[m]
-  //       i = m
-  //       break;
-  //   }
-  //   return a = false
-  // }
-  // component_2.onclick = () => {
-  //   switch (i) {
-  //     case 0:
-  //       n = i + 1
-  //       banner_1.style.backgroundImage = imgArr[n]
-  //       i = n
-  //       break;
-  //     case 1:
-  //       n = i + 1
-  //       banner_1.style.backgroundImage = imgArr[n]
-  //       i = n
-  //       break;
-  //     case 2:
-  //       n = i + 1
-  //       banner_1.style.backgroundImage = imgArr[n]
-  //       i = n
-  //       break;
-  //     case 3:
-  //       n = i + 1
-  //       banner_1.style.backgroundImage = imgArr[n]
-  //       i = n
-  //       break;
-  //     case 4:
-  //       n = 0
-  //       banner_1.style.backgroundImage = imgArr[n]
-  //       i = n
-  //       break;
-  //   }
-  //   return a = false
-  // }
-
+//监听banner的鼠标事件
+//1. 鼠标放在banner上，计时器停止
+//2. 出现左右按钮
+banner.addEventListener("mouseover", function () {
+  document.getElementById("component").style.opacity = "1"
+  end()
+})
+banner.addEventListener("mouseleave", function () {
+  document.getElementById("component").style.opacity = "0"
+  start()
+})
 
 
