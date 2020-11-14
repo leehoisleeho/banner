@@ -65,13 +65,13 @@ goPre.onmouseup = () => {
 let aaa = setInterval(() => {
   neXt()
   add_tab()
-}, 2000);
+}, 4000);
 
 function start() {
   aaa = setInterval(() => {
     neXt()
     add_tab()
-  }, 2000);
+  }, 4000);
 }
 
 function end() {
