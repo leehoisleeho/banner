@@ -101,7 +101,7 @@ banner.addEventListener("mouseleave", function () {
   start()
 })
 
-
+//热门商品 两个按钮
 let hot_tab_1 = document.getElementsByClassName("hot_tab_1")
 hot_tab_1[0].onmousedown = () => {
   document.getElementById("hot_2").style.transform = "translateX(0px)"
@@ -122,4 +122,121 @@ hot_tab_1[1].onmousedown = () => {
   hot_tab_1[1].className = "hot_tab_1 tab1_no"
 }
 
+let container_3 = document.getElementsByClassName("container_3_tab_2")
+function add_container_3_tab() {
+  for (let i = 0; i < container_3.length; i++) {
+    container_3[i].className = "container_3_tab_2"
+  }
+}
 
+//每次点击，就改变img的src
+let container_3_img = document.getElementById("container_3_img")
+      for(let i = 0;i<container_3.length;i++){
+      container_3[i].addEventListener("click",function(){
+      add_container_3_tab()
+      container_3[i].className = "container_3_tab_2 active"
+      n = i + 1
+      container_3_img.src = `./img/${n}.webp`
+    })
+  }
+
+function add_container_3_tab() {
+  for (let i = 0; i < container_3.length; i++) {
+    container_3[i].className = "container_3_tab_2"
+  }
+}
+
+
+let  container_3_Details_3_tag = document.getElementsByClassName("container_3_Details_3_tag")
+function add_container_3_Details_3_tag() {
+  for (let i = 0; i < container_3_Details_3_tag.length; i++) {
+    container_3_Details_3_tag[i].className = "container_3_Details_3_tag"
+  }
+}
+for(let i = 0;i< container_3_Details_3_tag.length;i++){
+  container_3_Details_3_tag[i].addEventListener("click",function(){
+    add_container_3_Details_3_tag()
+    container_3_Details_3_tag[i].className = "container_3_Details_3_tag active"
+    if(i===0){
+      console.log("我是黑色")
+      black()
+      let container_3_img = document.getElementById("container_3_img")
+     for(let i = 0;i<container_3.length;i++){
+      container_3[i].addEventListener("click",function(){
+      add_container_3_tab()
+    container_3[i].className = "container_3_tab_2 active"
+    n = i + 1
+    container_3_img.src = `./img/${n}.webp`
+  })
+}
+    }else{
+      console.log("我是白色")
+      white()
+      let container_3_img = document.getElementById("container_3_img")
+      for(let i = 0;i<container_3.length;i++){
+      container_3[i].addEventListener("click",function(){
+      add_container_3_tab()
+      container_3[i].className = "container_3_tab_2 active"
+      n = i + 1
+      container_3_img.src = `./img/w${n}.webp`
+    })
+  }
+    }
+  })
+}
+
+let container_3_tab_2_1 = document.getElementsByClassName("container_3_tab_2_1")
+function black(){
+  for(let i = 0;i<container_3_tab_2_1.length;i++){
+    n  = i +1
+    container_3_tab_2_1[i].src=`./img/${n}.webp`
+    container_3_img.src = `./img/1.webp`
+    add_container_3_tab()
+    container_3[0].className = "container_3_tab_2 active"
+  }
+}
+
+function white(){
+  for(let i = 0;i<container_3_tab_2_1.length;i++){
+    n  = i +1
+    container_3_tab_2_1[i].src=`./img/w${n}.webp`
+    container_3_img.src = `./img/w1.webp`
+    add_container_3_tab()
+    container_3[0].className = "container_3_tab_2 active"
+  }
+}
+
+let container_3_Details_4_1= document.getElementById("container_3_Details_4_1")
+let container_3_Details_4_2 = document.getElementById("container_3_Details_4_2")
+let container_3_Details_4_3_1 = document.getElementById("container_3_Details_4_3_1")
+
+let z = 0
+container_3_Details_4_1.onmousedown = ()=>{
+  container_3_Details_4_1.style.transform="scale(0.8)"
+  if(z===-225){
+    container_3_Details_4_1.classList.add("dis")
+  }else{
+    container_3_Details_4_2.classList.remove("dis")
+    z = z -25
+   container_3_Details_4_3_1.style.transform=`translateY(${z}px)`
+  }
+}
+
+container_3_Details_4_1.onmouseup = function(){
+  container_3_Details_4_1.style.transform="scale(1)"
+}
+
+container_3_Details_4_2.onmousedown =()=>{  
+  container_3_Details_4_2.style.transform="scale(0.8)"
+  if(z===0){
+    container_3_Details_4_2.classList.add("dis")
+  }else{
+    container_3_Details_4_1.classList.remove("dis")
+    z = z +25
+    container_3_Details_4_3_1.style.transform=`translateY(${z}px)`
+  }
+}
+
+container_3_Details_4_2.onmouseup = function(){
+  container_3_Details_4_2.style.transform="scale(1)"
+}
